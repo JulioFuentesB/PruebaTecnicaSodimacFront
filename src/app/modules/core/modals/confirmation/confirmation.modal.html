@@ -1,0 +1,16 @@
+<div class="confirmation">
+  <div class="confirmation__close-button">
+    <button mat-icon-button color="primary" (click)="closeDialog(false)">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="confirmation__body">
+    <p class="sgl__title"><strong>{{ data.title }}</strong></p>
+    <p class="sgl__text">{{ data.message }}</p>
+  </div>
+  <div class="confirmation__actions">
+    <button class="sgl__button--outlined" (click)="closeDialog(false)">Cancelar</button>
+    <button class="sgl__button" (click)="closeDialog(true)">Aceptar</button>
+  </div>
+</div>
+

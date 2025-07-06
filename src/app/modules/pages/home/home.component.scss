@@ -1,0 +1,122 @@
+$primary-color              : #0071CE;
+$secondary-color            : #DD0021;
+$tertiary-color             : #FBD500;
+$success-color              : #008A00;
+
+
+.home-wrapper {
+    background-color: #f8f9fa;
+    height: 100%;
+}
+
+.navigation-tabs {
+    display: flex;
+    background-color: $primary-color;
+    padding: 0 16px;
+    width: 100%;
+    z-index: 2;
+    
+    button {
+        color: white;
+        opacity: 0.8;
+        border-radius: 0;
+        padding: 0 24px;
+        height: 48px;
+        font-weight: 500;
+        position: relative;
+        transition: all 0.3s ease;
+        
+        &:hover:not(.active):not(:disabled) {
+            opacity: 1;
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        &.active {
+            opacity: 1;
+            background-color: rgba(0,0,0,0.1);
+            border-bottom: 3px solid $tertiary-color;
+        }
+        
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+    
+    .tab-icon {
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+    
+    .tab-badge {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        font-size: 8px;
+    }
+}
+
+.content-container {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+    background-color: white;
+    margin: 16px;
+    border-radius: 4px;
+    
+    .tab-content {
+        animation: fadeIn 0.3s ease-in-out;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navigation-tabs {
+        padding: 0;
+        justify-content: space-around;
+        
+        button {
+            padding: 0 8px;
+            min-width: auto;
+            flex: 1;
+            font-size: 12px;
+            
+            .tab-icon {
+                margin-right: 0;
+                display: block;
+                margin: 0 auto 4px;
+            }
+            
+            .tab-label {
+                display: block;
+                text-align: center;
+                font-size: 11px;
+                line-height: 1.2;
+            }
+        }
+    }
+    
+    .content-container {
+        margin: 8px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigation-tabs {
+        button {
+            .tab-label {
+                display: none;
+            }
+            
+            .tab-icon {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

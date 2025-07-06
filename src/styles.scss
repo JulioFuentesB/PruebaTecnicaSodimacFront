@@ -1,0 +1,58 @@
+// Material definitions
+@use "../node_modules/@angular/material" as mat;
+@include mat.core();
+
+// Colors scss
+@import "colors";
+
+// ng-select styles
+@import "@ng-select/ng-select/themes/material.theme.css";
+
+// Custom/My styles
+@import "custom-styles";
+
+//  ngx-toastr Styles
+@import "ngx-toastr/toastr";
+
+// fonts
+@import "fonts";
+
+// SGL Styles
+@import "sgl-styles";
+
+// Generate Bootstrap spacing classes
+@include generate-bootstrap-spacing($spacing-sizes);
+
+// PALETTES
+$my-primary: mat.define-palette($md-primary-sod-color);
+$my-accent: mat.define-palette($md-accent-sod-color);
+$my-warn: mat.define-palette($md-second-sod-color);
+
+$sod-theme: mat.define-light-theme((
+  color: (
+    primary:  $my-primary,
+    accent:   $my-accent,
+    warn:     $my-warn,
+  ),
+  typography: mat.define-typography-config($font-family: "Lato"),
+  density: 0,
+)
+);
+
+@include mat.all-component-themes($sod-theme);
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Lato", sans-serif;
+  height: 100% !important;
+  margin: 0;
+  font-size: 12px;
+}
+
+.progress-inner {
+  padding: 3px !important;
+}

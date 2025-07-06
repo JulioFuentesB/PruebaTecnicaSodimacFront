@@ -1,0 +1,117 @@
+<!-- src/app/pages/editar-pedido/editar-pedido.component.html -->
+<div class="form-container mat-elevation-z4">
+  <h2 class="form-title">Editar Pedido #{{pedidoId}}</h2>
+
+  <form [formGroup]="pedidoForm" (ngSubmit)="onSubmit()" class="producto-item">
+    <!-- Estado actual (solo lectura) -->
+    <mat-form-field appearance="outline" class="form-field" *ngIf="pedidoOriginal">
+      <mat-label>Estado</mat-label>
+      <input matInput [value]="pedidoOriginal.estado" readonly>
+    </mat-form-field>
+
+    <!-- Selección de Cliente -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Cliente</mat-label>
+      <mat-select formControlName="clienteId" required>
+        <mat-option *ngFor="let cliente of clientes" [value]="cliente.idCliente">
+          {{ cliente.nombre }} - {{ cliente.email }} ({{ cliente.direccion }})
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="pedidoForm.get('clienteId')?.hasError('required')">
+        Seleccione un cliente
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Fecha de Entrega -->
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Fecha de Entrega</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fechaEntrega" 
+             [min]="minDate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="pedidoForm.get('fechaEntrega')?.hasError('required')">
+        Ingrese una fecha de entrega
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Lista de Productos -->
+    <div formArrayName="productos" class="productos-container">
+      <h3>Productos</h3>
+      
+      <div *ngFor="let producto of productosArray.controls; let i = index" 
+           [formGroupName]="i" class="producto-item">
+        <div class="producto-fields">
+          <!-- Selección de Producto -->
+          <mat-form-field appearance="outline" class="producto-field">
+            <mat-label>Producto</mat-label>
+            <mat-select formControlName="productoId" required>
+              <mat-option *ngFor="let producto of productosDisponibles" [value]="producto.idProducto">
+                {{ producto.nombre }} ({{ producto.sku }}) - ${{ producto.precio | number }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="productosArray.at(i).get('productoId')?.hasError('required')">
+              Seleccione un producto
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Cantidad -->
+          <mat-form-field appearance="outline" class="cantidad-field">
+            <mat-label>Cantidad</mat-label>
+            <input matInput type="number" formControlName="cantidad" min="1" required>
+            <mat-error *ngIf="productosArray.at(i).get('cantidad')?.hasError('required')">
+              Ingrese la cantidad
+            </mat-error>
+            <mat-error *ngIf="productosArray.at(i).get('cantidad')?.hasError('min')">
+              Mínimo 1 unidad
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Botón Eliminar -->
+          <button mat-icon-button color="warn" type="button" (click)="removeProducto(i)" 
+                  class="remove-btn" matTooltip="Eliminar producto">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Botón Agregar Producto -->
+      <button mat-stroked-button type="button" (click)="addProducto()" color="primary" class="add-btn">
+        <mat-icon>add</mat-icon>
+        Agregar Producto
+      </button>
+    </div>
+
+    <!-- Observaciones -->
+    <mat-form-field appearance="outline" class="form-field-obs">
+      <mat-label>Observaciones</mat-label>
+      <textarea matInput formControlName="observaciones" rows="3"></textarea>
+    </mat-form-field>
+
+    <!-- Resumen del Pedido -->
+    <div class="resumen-pedido mat-elevation-z2" *ngIf="pedidoForm.valid">
+      <h3>Resumen del Pedido</h3>
+      <p><strong>Cliente:</strong> {{ getClienteSeleccionado()?.nombre || 'No seleccionado' }}</p>
+      <p><strong>Dirección de entrega:</strong> {{ getClienteSeleccionado()?.direccion || 'No seleccionado' }}</p>
+      <p><strong>Fecha de entrega:</strong> {{ pedidoForm.get('fechaEntrega')?.value | date:'mediumDate' }}</p>
+      <p><strong>Productos:</strong></p>
+      <ul>
+        <li *ngFor="let item of pedidoForm.get('productos')?.value">
+          {{ getProductoNombre(item.productoId) }} - Cantidad: {{ item.cantidad }}
+        </li>
+      </ul>
+      <p><strong>Total estimado:</strong> {{ calcularTotal() | currency:'COP':'symbol':'1.0-0' }}</p>
+    </div>
+
+    <!-- Botones de Acción -->
+    <div class="form-actions">   
+      <button mat-raised-button color="primary" type="submit" [disabled]="loading || pedidoForm.invalid">
+        <mat-icon>save</mat-icon>
+        {{ loading ? 'Actualizando...' : 'Actualizar Pedido' }}
+      </button>
+      <button mat-stroked-button type="button" (click)="router.navigate(['/vista-listado-pedidos'])" color="warn">
+        <mat-icon>cancel</mat-icon>
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

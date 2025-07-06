@@ -1,0 +1,25 @@
+<ngx-spinner [fullScreen]="true" bdColor="rgb(255,255,255)" color="#0971ce" size="medium" type="timer">
+  Cargando...
+</ngx-spinner>
+
+
+
+<div class="rel-pos h-100-p w-100-p">
+  <div class="main-background-header">
+  </div>
+  <div [ngClass.gt-sm]="'main-contend-lg'" [ngClass]="'main-contend-sm'" class="main-contend" fxLayout="column">
+    <div class="header-container" fxLayout fxLayoutAlign="start center">
+      
+      <h2 [ngClass.gt-sm]="'main-tittle-lg'" [ngClass]="'main-tittle-sm'" class="main-tittle ml-8">
+        {{((pageService.headerPage | async)?.tittleName || ' - ')}}
+      </h2>
+    </div>
+    <div [ngClass.gt-sm]="'main-card-contend-lg'" [ngClass]="'main-card-contend-sm'" class="main-card-contend" fxFlex>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+
+
+

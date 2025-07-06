@@ -1,0 +1,12 @@
+// src/styles/_mixins.scss
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'small' {
+    @media (max-width: 600px) { @content; }
+  }
+  @else if $breakpoint == 'medium' {
+    @media (max-width: 960px) { @content; }
+  }
+  @else if $breakpoint == 'large' {
+    @media (min-width: 1200px) { @content; }
+  }
+}

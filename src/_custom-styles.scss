@@ -1,0 +1,278 @@
+@import "colors";
+
+//region Owner Styles
+.no-select {
+  user-select : none;
+}
+
+.rel-pos {
+  position : relative;
+}
+
+.mat-form-field-infix {
+  width : auto !important;
+}
+
+//endregion
+
+//region Scrollbar
+::-webkit-scrollbar {
+  width  : 8px;
+  height : 8px;
+}
+
+::-webkit-scrollbar-button {
+  width  : 0;
+  height : 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background    : #A1A1A1;
+  border        : 0 none #FFFFFF;
+  border-radius : 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background : #9C9C9C;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background : #7A7A7A;
+}
+
+::-webkit-scrollbar-track {
+  background    : #FFFFFF;
+  border        : 0 none #FFFFFF;
+  border-radius : 50px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background : #FFFFFF;
+}
+
+::-webkit-scrollbar-track:active {
+  background : #D9D9D9;
+}
+
+::-webkit-scrollbar-corner {
+  background : transparent;
+}
+
+//endregion
+
+//region NG-SELECT IMPROVED STYLES
+$fontSize   : 12px;
+
+.ng-select-error-text-sod {
+  position  : absolute;
+  top       : calc(100% - 0px);
+  left      : 10px;
+  color     : red;
+  font-size : 65%;
+}
+
+.ng-select-pd-error-text-sod {
+  position  : absolute;
+  top       : calc(100% - 18px);
+  left      : 10px;
+  color     : red;
+  font-size : 65%;
+}
+
+// NG-Select Normal
+ng-select {
+  font-size      : $fontSize !important;
+  padding-bottom : 16.125px !important;
+  top            : -2px !important;
+
+  & .ng-placeholder {
+    top : 13px !important;
+  }
+
+  &.ng-select-disabled div.ng-select-container.ng-appearance-outline:hover:after {
+    border : solid 1px #0000001F !important;
+  }
+
+  & .ng-select-container {
+    min-height : 47px !important;
+  }
+
+  & .ng-spinner-loader {
+    top               : 14px !important;
+    border-left-color : $primary !important;
+  }
+
+  & div {
+    font-size : $fontSize !important;
+  }
+
+  & input {
+    padding-left   : 8px !important;
+    font-size      : $fontSize !important;
+    width          : calc(100% - 60px) !important;
+    padding-bottom : 6px !important;
+    font-family    : inherit !important;
+  }
+
+  & .ng-value.ng-star-inserted {
+    padding-top    : 7px;
+    padding-bottom : 7px;
+    line-height    : $fontSize;
+  }
+
+  & .ng-clear-wrapper {
+    bottom : 10px !important;
+  }
+
+  & .ng-arrow-wrapper {
+    bottom : 14px !important;
+  }
+
+  &.ng-invalid.ng-touched {
+    & .ng-placeholder {
+      color : $secondary !important;
+    }
+
+    & .ng-appearance-outline:after {
+      border : $secondary 2px solid !important;
+    }
+
+    & .ng-arrow {
+      color : $secondary !important;
+    }
+  }
+}
+
+.ng-select.ng-select-disabled .ng-select-container:after {
+  background : none !important;
+}
+
+// NG-Select Multiple
+.multi-select {
+  & .ng-value.ng-star-inserted {
+    background-color : $primary !important;
+    padding          : 5px !important;
+    border-radius    : 7px !important;
+  }
+
+  & input {
+    width : auto !important;
+  }
+
+  & span {
+    margin-left : 4px;
+  }
+
+  & .ng-option {
+    padding      : 0 !important;
+    padding-left : 5px !important;
+
+    &.ng-option-selected {
+      color : $primary !important;
+    }
+  }
+}
+
+// both of them
+.ng-dropdown-panel {
+  &.ng-select-bottom {
+    top : calc(100% - 16px);
+  }
+
+  &.ng-select-top {
+    bottom : calc(100% - 0px);
+  }
+}
+
+.ng-select .ng-select-container{
+  color: white;
+}
+
+//endregion
+
+// Define Bootstrap's spacing scale in rems
+$spacing-sizes: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 0.75,
+  4: 1,
+  5: 1.25,
+  6: 1.5,
+  7: 1.75,
+  8: 2,
+  9: 2.5,
+  10: 3,
+  11: 3.5,
+  12: 4,
+  13: 4.5,
+  14: 5
+);
+
+// Define a mixin for generating spacing classes
+@mixin generate-bootstrap-spacing($spacing-map) {
+  @each $key, $size in $spacing-map {
+    .m-#{$key} { margin: #{$size}rem !important; }
+    .mt-#{$key}, .my-#{$key} { margin-top: #{$size}rem !important; }
+    .mr-#{$key}, .mx-#{$key} { margin-right: #{$size}rem !important; }
+    .mb-#{$key}, .my-#{$key} { margin-bottom: #{$size}rem !important; }
+    .ml-#{$key}, .mx-#{$key} { margin-left: #{$size}rem !important; }
+
+    .p-#{$key} { padding: #{$size}rem !important; }
+    .pt-#{$key}, .py-#{$key} { padding-top: #{$size}rem !important; }
+    .pr-#{$key}, .px-#{$key} { padding-right: #{$size}rem !important; }
+    .pb-#{$key}, .py-#{$key} { padding-bottom: #{$size}rem !important; }
+    .pl-#{$key}, .px-#{$key} { padding-left: #{$size}rem !important; }
+  }
+
+  // Generate auto margin classes
+  .m-auto { margin: auto !important; }
+  .mt-auto { margin-top: auto !important; }
+  .mr-auto { margin-right: auto !important; }
+  .mb-auto { margin-bottom: auto !important; }
+  .ml-auto { margin-left: auto !important; }
+  .mx-auto { margin-right: auto !important; margin-left: auto !important; }
+  .my-auto { margin-top: auto !important; margin-bottom: auto !important; }
+}
+
+.text-ellipsis {
+  text-overflow : ellipsis;
+  white-space   : nowrap;
+  overflow      : hidden;
+}
+
+@for $size from 1 through 60 {
+  .font-size-#{$size * 2} {
+    font-size : #{$size * 2}px !important;
+  }
+}
+
+.text-bold, strong {
+  font-weight : 700;
+}
+
+.w-100-p {
+  width : 100% !important;
+}
+
+.h-100-p {
+  height : 100% !important;
+}
+
+.text-align-end {
+  text-align : end !important;
+}
+
+.text-align-center {
+  text-align : center !important;
+}
+
+.over-flow-auto {
+  overflow-y : auto;
+}
+
+.mat-mdc-dialog-container, .mdc-dialog__surface {
+  box-shadow: unset !important;
+}
+
+// endregion

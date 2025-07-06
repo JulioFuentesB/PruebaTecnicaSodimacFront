@@ -1,0 +1,168 @@
+$primary-color: #0071CE;
+$secondary-color: #DD0021;
+$tertiary-color: #FBD500;
+$success-color: #008A00;
+
+.pedidos-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px;
+}
+
+.filtros-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: white;
+  border-radius: 4px;
+
+  .search-field {
+    flex: 2;
+  }
+
+  .filter-field {
+    flex: 1;
+  }
+}
+
+.table-container {
+  position: relative;
+  flex: 1;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.table-wrapper {
+  overflow: auto;
+  max-height: calc(100vh - 250px);
+}
+
+.cliente-cell {
+  .cliente-nombre {
+    font-weight: 500;
+  }
+
+  .cliente-email {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .cliente-direccion {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 4px;
+  }
+}
+
+.productos-cell {
+  .producto {
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+
+  .total {
+    font-weight: 500;
+    color: $primary-color;
+    margin-top: 8px;
+  }
+}
+
+.estado-badge, .ruta-badge {
+  padding: 4px 8px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+  display: inline-block;
+}
+
+.estado-badge {
+  &.estado-pendiente {
+    background-color: #FF9800; // naranja
+  }
+
+  &.estado-asignado {
+    background-color: #2196F3; // azul
+  }
+
+  &.estado-transito {
+    background-color: #673AB7; // morado
+  }
+
+  &.estado-entregado {
+    background-color: #4CAF50; // verde
+  }
+
+  &.estado-cancelado {
+    background-color: #F44336; // rojo
+  }
+}
+
+.rutas-cell {
+  .ruta-item {
+    margin-bottom: 8px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .ruta-badge {
+    &.ruta-transito {
+      background-color: #673AB7; // morado
+    }
+
+    &.ruta-reportado {
+      background-color: #FFC107; // amarillo
+      color: #000;
+    }
+
+    &.ruta-novedad {
+      background-color: #F44336; // rojo
+    }
+
+    &.ruta-entregado {
+      background-color: #4CAF50; // verde
+    }
+  }
+
+  .ruta-fecha {
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 2px;
+    margin-left: 12px;
+  }
+
+  .sin-rutas {
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5);
+    font-style: italic;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .filtros-container {
+    flex-direction: column;
+    
+    .search-field, .filter-field {
+      width: 100%;
+    }
+  }
+}

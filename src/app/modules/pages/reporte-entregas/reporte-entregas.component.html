@@ -1,0 +1,115 @@
+<div class="reporte-container">
+  <div *ngIf="loading" class="loading-overlay">
+    <mat-spinner diameter="50"></mat-spinner>
+  </div>
+
+  <h2 class="reporte-title">Reporte de Entregas</h2>
+
+  <!-- Formulario de fechas -->
+  <form [formGroup]="dateForm" (ngSubmit)="loadReporteData()" class="date-filter-form">
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha Inicio</mat-label>
+      <input matInput [matDatepicker]="pickerInicio" formControlName="fechaInicio">
+      <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+      <mat-datepicker #pickerInicio></mat-datepicker>
+      <mat-error *ngIf="dateForm.get('fechaInicio')?.hasError('required')">
+        Fecha inicial es requerida
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha Fin</mat-label>
+      <input matInput [matDatepicker]="pickerFin" formControlName="fechaFin">
+      <mat-datepicker-toggle matSuffix [for]="pickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #pickerFin></mat-datepicker>
+      <mat-error *ngIf="dateForm.get('fechaFin')?.hasError('required')">
+        Fecha final es requerida
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="dateForm.invalid || loading">
+      Generar Reporte
+    </button>
+  </form>
+
+  <!-- Mensaje de error -->
+  <div *ngIf="hasError" class="error-message">
+    <mat-icon>error_outline</mat-icon>
+    <span>Ocurrió un error al cargar el reporte. Por favor intente nuevamente.</span>
+  </div>
+
+  <!-- Mensaje cuando no hay datos -->
+  <div *ngIf="!loading && !reporteData && !hasError" class="no-data-message">
+    <mat-icon>info_outline</mat-icon>
+    <span>No hay datos disponibles para el rango de fechas seleccionado.</span>
+  </div>
+
+  <!-- Contenido del reporte -->
+  <div *ngIf="!loading && reporteData" class="reporte-content">
+    <p class="periodo-text">Período: {{reporteData.periodo}}</p>
+
+    <!-- Tarjetas de resumen -->
+    <div class="summary-cards">
+      <mat-card *ngFor="let estado of objectKeys(reporteData.totales)" class="estado-card" 
+                [style.border-top]="'5px solid ' + colorMap[estado]">
+        <mat-card-header>
+          <mat-card-title>{{estado}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-content">
+            <div class="card-value">{{reporteData.totales[estado].cantidad}}</div>
+            <div class="card-label">pedidos</div>
+            <div class="card-percentage">{{reporteData.totales[estado].porcentaje | number:'1.2-2'}}%</div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="total-card">
+        <mat-card-header>
+          <mat-card-title>Total</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="card-content">
+            <div class="card-value">{{getTotalPedidos()}}</div>
+            <div class="card-label">pedidos</div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Gráfico de barras con CSS -->
+    <div class="bar-chart-container">
+      <h3>Distribución de Pedidos por Estado</h3>
+      <div *ngFor="let estado of objectKeys(reporteData.totales)" class="bar-item">
+        <div class="bar-label">{{estado}} ({{reporteData.totales[estado].porcentaje | number:'1.2-2'}}%)</div>
+        <div class="bar-track">
+          <div class="bar-fill" 
+               [style.width]="getPercentageWidth(reporteData.totales[estado].porcentaje)"
+               [style.background]="colorMap[estado]">
+            <span class="bar-count">{{reporteData.totales[estado].cantidad}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gráfico de pastel con CSS -->
+    <div class="pie-chart-container">
+      <h3>Porcentaje por Estado</h3>
+      <div class="pie-chart">
+        <div *ngFor="let estado of objectKeys(reporteData.totales); let i = index" 
+             class="pie-segment"
+             [style.transform]="'rotate(' + (i * 72) + 'deg)'"
+             [style.background]="colorMap[estado]"
+             [style.opacity]="0.8"
+             [style.width]="reporteData.totales[estado].porcentaje * 3.6 + 'deg'">
+        </div>
+      </div>
+      <div class="pie-legend">
+        <div *ngFor="let estado of objectKeys(reporteData.totales)" class="legend-item">
+          <span class="legend-color" [style.background]="colorMap[estado]"></span>
+          <span class="legend-label">{{estado}} ({{reporteData.totales[estado].porcentaje | number:'1.2-2'}}%)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

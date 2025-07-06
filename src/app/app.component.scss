@@ -1,0 +1,129 @@
+//region Template Styles
+.main-tittle {
+    color          : #FFFFFF;
+    font-weight    : bolder;
+    letter-spacing : 0.2em;
+    margin         : 0;
+  }
+
+  .header-container {
+    padding: 14px;
+    height: 65px;
+  }
+
+  .main-tittle-lg {
+    font-size : 25px;
+  }
+
+  .main-tittle-sm {
+    font-size   : 12px;
+    line-height : 26px;
+  }
+
+  .main-contend {
+    z-index  : 2;
+    position : absolute;
+    height   : 100vh;
+    width    : 100%;
+  }
+
+
+  .main-contend-lg {
+    padding : 0 10px;
+  }
+
+  .main-contend-sm {
+    padding : 0;
+  }
+
+  .main-background-header {
+    background-color : #0071CE;
+    position         : absolute;
+    z-index          : 1;
+    top              : 0;
+    right            : 0;
+    width            : 100%;
+    height           : 200px;
+  }
+
+  .main-card-contend {
+    overflow         : auto;
+    background-color : white;
+    padding          : 10px;
+    box-shadow       : 0 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%),
+    0px 1px 3px 0px rgb(0 0 0 / 12%);
+  }
+
+  .main-card-contend-lg {
+    border-radius : 8px 8px 0 0;
+  }
+
+  .main-card-contend-sm {
+    border-radius : 0;
+  }
+
+  .button-back {
+    color : white;
+  }
+
+  //endregion
+
+  // region Version
+  .version {
+    position         : fixed;
+    top              : 0;
+    right            : 10px;
+    z-index          : 3;
+    font-size        : 10px;
+    background-color : #00000050;
+    color            : white;
+    padding          : 2px 6px 6px 6px;
+    border-radius    : 0 0 8px 8px;
+  }
+
+  // endregion
+
+  //region Error Warning
+  .mat-card-error {
+    position  : relative;
+    padding   : 0;
+    width     : 100%;
+    max-width : 400px;
+  }
+
+  .container-dialog {
+    padding : 24px;
+  }
+
+
+  .yellow-border {
+    border-top : #0071CE solid 4px;
+  }
+
+  .icon-big {
+    font-size : 30px;
+    height    : 30px;
+    width     : 30px;
+  }
+
+  .div-icon {
+    position      : absolute;
+    top           : -32px;
+    height        : 60px;
+    width         : 60px;
+    border-radius : 35px;
+  }
+
+  .yellow-color {
+    background-color : #0071CE !important;
+    color            : white !important;
+  }
+
+  .mat-icon-top {
+    font-size : 30px;
+    height    : 30px;
+    width     : 30px;
+  }
+
+  //endregion
