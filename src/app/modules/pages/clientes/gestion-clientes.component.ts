@@ -36,6 +36,7 @@ export class GestionClientesComponent implements OnInit, AfterViewInit {
       direccion: ['', [Validators.required, Validators.maxLength(200)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
       telefono: ['', [
+        Validators.required,
         Validators.maxLength(20),
         Validators.pattern(/^[0-9+()\-\s]+$/) // Validación para formato de teléfono
       ]]

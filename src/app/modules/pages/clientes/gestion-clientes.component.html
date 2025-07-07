@@ -51,11 +51,27 @@
                     <mat-error *ngIf="direccion?.hasError('maxlength')">Máximo 200 caracteres</mat-error>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline" class="form-field">
+                <!-- <mat-form-field appearance="outline" class="form-field">
                     <mat-label>Teléfono</mat-label>
                     <input matInput formControlName="telefono" placeholder="Número de teléfono">
                     <mat-error *ngIf="telefono?.hasError('maxlength')">Máximo 20 caracteres</mat-error>
+                </mat-form-field> -->
+
+                <mat-form-field appearance="outline" class="form-field">
+                    <mat-label>Teléfono*</mat-label>
+                    <input matInput formControlName="telefono" placeholder="Número de teléfono"
+                        (input)="formatTelefono($event)" type="tel">
+                    <mat-error *ngIf="telefono?.hasError('required')">
+                        El teléfono es requerido
+                    </mat-error>
+                    <mat-error *ngIf="telefono?.hasError('maxlength')">
+                        Máximo 20 caracteres
+                    </mat-error>
+                    <mat-error *ngIf="telefono?.hasError('pattern')">
+                        Ingrese un número de teléfono válido
+                    </mat-error>
                 </mat-form-field>
+
             </div>
 
             <div class="form-actions">
@@ -103,7 +119,7 @@
 
                 <!-- Columna Teléfono -->
                 <ng-container matColumnDef="telefono">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header  >Teléfono</th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Teléfono</th>
                     <td mat-cell *matCellDef="let cliente">{{cliente.telefono || '-'}}</td>
                 </ng-container>
 
