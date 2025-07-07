@@ -15,6 +15,7 @@ import { FormularioRegistroPedidosComponent } from '../formulario-registro-pedid
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditarPedidoComponent } from '../formulario-registro-pedidos/editar-pedido/editar-pedido.component';
 import { GestionClientesComponent } from '../clientes/gestion-clientes.component';
+import { GestionProductosComponent } from '../gestion-productos/gestion-productos.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { GestionClientesComponent } from '../clientes/gestion-clientes.component
     FormularioRegistroPedidosComponent,
     EditarPedidoComponent,
     VistaAsignacionRutasComponent,
-    GestionClientesComponent
+    GestionClientesComponent,
+    GestionProductosComponent
   ],
   imports: [
     CommonModule,

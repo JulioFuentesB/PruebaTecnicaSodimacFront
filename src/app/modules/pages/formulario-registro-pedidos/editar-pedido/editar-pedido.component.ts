@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Producto } from 'src/app/modules/core/interfaces/formulario.model';
 import { Cliente, Pedido } from 'src/app/modules/core/interfaces/listado-pedidos.model';
+import { Producto } from 'src/app/modules/core/interfaces/Productos.model';
 import { FormularioRegistroService } from 'src/app/modules/core/services/formulario-registro.service';
 import { PedidosService } from 'src/app/modules/core/services/pedidos.service';
 

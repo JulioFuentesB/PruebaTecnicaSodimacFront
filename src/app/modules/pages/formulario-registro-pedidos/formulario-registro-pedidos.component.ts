@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PedidosService } from '../../core/services/pedidos.service';
 import { FormularioRegistroService } from '../../core/services/formulario-registro.service';
-import { Cliente, Producto } from '../../core/interfaces/formulario.model';
 import { Router } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
+import { Cliente } from '../../core/interfaces/Cliente.model';
+import { Producto } from '../../core/interfaces/Productos.model';
 
 
 @Component({

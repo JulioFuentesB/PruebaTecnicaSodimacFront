@@ -7,42 +7,48 @@ import { HeaderObj, PageService } from '../../core/services/page.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-   activeTab: string = 'orders';
+  activeTab: string = 'orders';
   loading = false;
 
   tabs = [
-    { 
-      id: 'orders', 
-      label: 'Lista Pedidos', 
+    {
+      id: 'orders',
+      label: 'Lista Pedidos',
       icon: 'list_alt',
       disabled: false,
       badge: false
     },
-    { 
-      id: 'register', 
-      label: 'Nuevo Pedido', 
+    {
+      id: 'register',
+      label: 'Nuevo Pedido',
       icon: 'note_add',
       disabled: false,
       badge: false
     },
-    { 
-      id: 'routes', 
-      label: 'Asignar Rutas', 
+    {
+      id: 'clientes',
+      label: 'Clientes',
+      icon: 'group',
+      disabled: false,
+      badge: false
+    }, {
+      id: 'productos',
+      label: 'Productos',
+      icon: 'inventory_2', // Ícono adecuado para productos/inventario
+      disabled: false,
+      badge: false
+    },
+    {
+      id: 'routes',
+      label: 'Asignar Rutas',
       icon: 'alt_route',
       disabled: false,
       badge: false // Ejemplo de badge
     },
-    { 
-      id: 'reports', 
-      label: 'Reportes', 
+    {
+      id: 'reports',
+      label: 'Reportes',
       icon: 'assessment',
-      disabled: false,
-      badge: false
-    },
-    { 
-      id: 'clientes', 
-      label: 'Clientes', 
-      icon: 'group',
       disabled: false,
       badge: false
     }
@@ -54,15 +60,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     // Puedes cargar datos iniciales aquí si es necesario
-   // this.activeTab="orders"
+    // this.activeTab="orders"
   }
 
   changeTab(tabId: string): void {
     if (this.activeTab === tabId) return;
-    
+
     this.loading = true;
     this.activeTab = tabId;
-    
+
     // Simular carga (opcional)
     setTimeout(() => {
       this.loading = false;

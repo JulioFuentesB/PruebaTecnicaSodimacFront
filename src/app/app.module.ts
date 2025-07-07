@@ -22,7 +22,7 @@ registerLocaleData(localeEs);
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
     
 
   ],

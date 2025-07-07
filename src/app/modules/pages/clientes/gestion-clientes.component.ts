@@ -5,8 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { Cliente } from '../../core/interfaces/formulario.model';
 import { ClientesService } from '../../core/services/Clientes.Service';
+import { Cliente } from '../../core/interfaces/Cliente.model';
 
 @Component({
   selector: 'app-gestion-clientes',

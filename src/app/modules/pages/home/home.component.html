@@ -1,11 +1,10 @@
 <div class="home-wrapper" fxLayout="column" fxFlexFill>
     <!-- Navigation Tabs -->
     <nav class="navigation-tabs mat-elevation-z2">
-        <button mat-button *ngFor="let tab of tabs" [class.active]="isActive(tab.id)" (click)="changeTab(tab.id)"
-            >
+        <button mat-button *ngFor="let tab of tabs" [class.active]="isActive(tab.id)" (click)="changeTab(tab.id)">
             <mat-icon class="tab-icon">{{tab.icon}}</mat-icon>
             <span class="tab-label">{{tab.label}}</span>
-           
+
         </button>
     </nav>
 
@@ -15,9 +14,11 @@
             <app-vista-listado-pedidos *ngSwitchCase="'orders'" class="tab-content"></app-vista-listado-pedidos>
             <app-formulario-registro-pedidos *ngSwitchCase="'register'"
                 class="tab-content"></app-formulario-registro-pedidos>
+            <app-gestion-clientes *ngSwitchCase="'clientes'" class="tab-content"></app-gestion-clientes>
+            <app-gestion-productos *ngSwitchCase="'productos'" class="tab-content"></app-gestion-productos>
             <app-vista-asignacion-rutas *ngSwitchCase="'routes'" class="tab-content"></app-vista-asignacion-rutas>
             <app-reporte-entregas *ngSwitchCase="'reports'" class="tab-content"></app-reporte-entregas>
-            <app-gestion-clientes *ngSwitchCase="'clientes'" class="tab-content"></app-gestion-clientes>
+
         </ng-container>
     </div>
 </div>

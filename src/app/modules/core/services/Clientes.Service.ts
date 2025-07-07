@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Cliente } from '../interfaces/formulario.model';
+import { Cliente } from '../interfaces/Cliente.model';
 
 
 @Injectable({
@@ -17,10 +17,6 @@ export class ClientesService {
  getClientes() {
     return this.http.get<any>(`${environment.apiUrl}clientes`);
   }
-
-  // getClientes(): Observable<Cliente[]> {
-  //   return this.http.get<Cliente[]>(this.apiUrl);
-  // }
 
   getClienteById(id: number): Observable<Cliente> {
     return this.http.get<Cliente>(`${this.apiUrl}/${id}`);
