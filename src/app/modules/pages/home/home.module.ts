@@ -14,6 +14,7 @@ import { ReporteEntregasComponent } from '../reporte-entregas/reporte-entregas.c
 import { FormularioRegistroPedidosComponent } from '../formulario-registro-pedidos/formulario-registro-pedidos.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditarPedidoComponent } from '../formulario-registro-pedidos/editar-pedido/editar-pedido.component';
+import { GestionClientesComponent } from '../clientes/gestion-clientes.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { EditarPedidoComponent } from '../formulario-registro-pedidos/editar-ped
     ReporteEntregasComponent,
     FormularioRegistroPedidosComponent,
     EditarPedidoComponent,
-    VistaAsignacionRutasComponent
+    VistaAsignacionRutasComponent,
+    GestionClientesComponent
   ],
   imports: [
     CommonModule,

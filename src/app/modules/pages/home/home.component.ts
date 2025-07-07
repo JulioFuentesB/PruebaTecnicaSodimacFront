@@ -38,6 +38,13 @@ export class HomeComponent implements OnInit {
       icon: 'assessment',
       disabled: false,
       badge: false
+    },
+    { 
+      id: 'clientes', 
+      label: 'Clientes', 
+      icon: 'group',
+      disabled: false,
+      badge: false
     }
   ];
 

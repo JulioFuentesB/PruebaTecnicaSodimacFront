@@ -1,0 +1,136 @@
+$primary-color: #0071CE;
+$secondary-color: #DD0021;
+$tertiary-color: #FBD500;
+$success-color: #008A00;
+
+.clientes-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 16px;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+
+  h1 {
+    margin: 0;
+    color: $primary-color;
+    font-size: 24px;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.filtros-container {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: white;
+  border-radius: 4px;
+
+  .search-field {
+    flex: 1;
+  }
+}
+
+.form-container {
+  padding: 24px;
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+  
+  &.expanded {
+    max-height: 500px;
+    padding: 24px;
+    overflow: visible;
+  }
+
+  h2 {
+    margin-top: 0;
+    color: $primary-color;
+    font-size: 18px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    .form-field {
+      flex: 1;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+}
+
+.table-container {
+  position: relative;
+  flex: 1;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.table-wrapper {
+  overflow: auto;
+  flex: 1;
+}
+
+/* Estilos para la tabla */
+table {
+  width: 100%;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 8px 16px;
+}
+
+.mat-column-acciones {
+  width: 80px;
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column !important;
+  }
+
+  .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
