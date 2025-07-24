@@ -1,4 +1,4 @@
-# PruebaTecnicaSodimacFront
+# PruebaTecnicaFront
 
 Este archivo `README.md` proporciona una visión general y guía de instalación para una aplicación Angular versión 16. La aplicación está diseñada para ejecutarse en entornos de internet o intranet, con una configuración predeterminada para intranet que se puede ajustar según las necesidades del proyecto. Se recomienda a los desarrolladores de front-end trabajar a partir de `home.component` y `home.module` para la adición de nuevos componentes y módulos, evitando modificaciones directas en `app.component`.
 
@@ -15,7 +15,7 @@ Para proyectos que no buscan implementar una arquitectura de microfront, se reco
 ## Características
 
 - **Angular v16**: Una de las últimas versiones del popular framework de desarrollo web.
-- **Angular Material**: Un conjunto de componentes de Material Design para Angular, Algunos de ellos ya personalizados para Sodimac.
+- **Angular Material**: Un conjunto de componentes de Material Design para Angular, Algunos de ellos ya personalizados .
 - **Angular Material Icons Regular, Rounded y Outlined**: Iconos de Material Design donde su uso son respectivamente: 
   `<mat-icon>arrow_back</mat-icon>`,
   `<mat-icon fontSet="material-icons-round">arrow_back</mat-icon>`,

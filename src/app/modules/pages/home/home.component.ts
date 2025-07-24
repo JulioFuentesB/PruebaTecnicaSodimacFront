@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
   ];
 
   constructor(private pageService: PageService) {
-    this.pageService.setHeaderPage(new HeaderObj('SODIMAC TEST', '/', false));
+    this.pageService.setHeaderPage(new HeaderObj('TEST', '/', false));
   }
 
   ngOnInit(): void {
